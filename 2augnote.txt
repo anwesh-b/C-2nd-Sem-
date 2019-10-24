@@ -1,0 +1,85 @@
+It is often seen in programming that variables of different types are used in the same expressions eg float with integer or an integer with a double. In these cases, c++ automatically converts one data type to another as the situation demands. The data type to the right of the assignment operator is converted to the type of data to the left.
+for eg: when assigning an int to float, the int will be promoted to a float and then assigned. 
+{
+    int a;
+    float b=a;
+}
+
+The type conversion are automatic as long as the data types involved are built in types. But when the case is of different data types(eg class type), compiler does not support automatic type conversion and we must design conversion routine by ourselves.
+A conversion function is a special kind of class member function. It defines a user defined conversion to convert a class object to some other types. A conversion is declared with the name that follows the keyword operator in the declaration of themember function.
+
+Types of Type conversion
+1) Conversion from basic type to class type
+2) Conversion from class type to basic type
+3) Conversion from class type to another class type
+4) Conversion from basic type to another basic type
+
+
+1) Conversion from basic type to class type
+    =>The constructor handles the task of converting basic type to class type. The general form of overloaded casting operator function is shown below. This function is also known as conversion function.
+    operator typename(){
+        ....
+        function body
+        ....
+    }
+    The above function converts the class type into the type name mentioned in the function. For example: operator float() converts a class type to float, operator int() converts a class type to int and so on.
+
+    Note: The constructor handles the task of converting basic type to class type to class type very well. But you cannot use constructors for converting class type to basic data types. Instead you can define an overloaded casting opeartor that can be used to convert a class data type into a basic data type as given above.
+
+    Example:
+
+    #include <iostream>
+    using namespace std;
+    class converter{
+        private:
+            int meter;
+        public:
+            converter(float k){
+                meter = k*10000;
+            }
+            void display(){
+                cout << "meter" << meter;
+            }
+    };
+    void main(){
+        converter c1;
+        float km;
+        cout << "Enter distance in km";
+        cin >> km;
+        c1 = km;
+        c1.display;
+    }
+
+
+2) Conversion from class type to basic type
+    =>The constructor handles the task of converting basic type to class type very well. But you cannot use construtor for convertinf class to basic data types. Instead an overloaded castinge operator is used to convert a class type to a basic data type. the general form of an overloaded casing opeartor is shown below, this function is also known as conversion function.
+    Syntax:
+        opeartor typename(){
+            .....
+            function body
+            ......
+        }
+    The above function converts the class type into the typename mentioned in the functuon. For eg opeartor float() converts a class type to float opearator, int() converts a class type to int and so on.
+
+    The casting opeartor function should satisfy following conditions:
+        -It must be a class member
+        -It must not specify a return type
+        -It must not have any arguments. The object that invokes the function has its members directly accessible since this is a member function.
+
+    Example:
+        #include<iostream>
+        using namespace std;
+
+        class Data{
+            
+        }
+        int main(){
+            int j;      //this is an integer var
+            float f;    //this is a float var
+            data a;     //this is an object a of class data-class type 
+            j=a;        //converting class type to int type
+            f=a;        //converting class type to float type
+            cout << "Value of j" << j;
+            cout << "Value of f" << f;
+            return 0;
+        }

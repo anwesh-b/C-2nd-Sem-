@@ -1,0 +1,1 @@
+// WAP to define a class employee where department have name, address and location. Use employee and customer with their essential features. Note: Employee and customer are derived class which are derived from the class department.

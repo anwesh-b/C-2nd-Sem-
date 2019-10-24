@@ -1,0 +1,57 @@
+Overloading of Template function
+A template function may be overloaded either by template or ordinary function of its name. In such cases, the overloading resolution is accomplished as:
+1) Call an ordinary function that has an exact match.
+2) Call a template function that could be created with an exact match.
+3) Try normal overloading resoltuin to ordinary functions and call the one that matches.
+
+    Example:
+        #include<iostream>
+        using namespace std;
+        template<class T>
+        void display(T x){
+            cout << "Template display" << x << endl;
+        }
+        void display(int x){    //generic function
+            cout << "Explicit display" << x << endl;
+        }
+        void main(){
+            display(100);
+            display(100.25);
+            display('D');
+        }
+
+    Class Template
+        template<class T>
+        class classname{
+            ........
+            .......
+        }
+        or
+        template<class T1, class T2, ......... , class Tn>{
+            .........
+            .........
+        }
+
+    Example:
+        template<class T1, class T2>
+        class Test{
+            private:
+                T1 a;
+                T1 b;
+            public:
+                Test(T1 x, T2 y){
+                    a=x;
+                    b=y;
+                }
+                void show(){
+                    cout << a << ' and ' << b << endl; 
+                }
+        };
+        void main(){
+            Test <float, int>t1(2.56,71)
+            Test <int, char>t2(100,'n1')
+            t1.show();
+            t2.show();
+        }
+
+#Question: WAP to implement stack operation using class template

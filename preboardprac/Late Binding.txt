@@ -1,0 +1,4 @@
+Late binding is also called dynamic binding
+Early bindig fixes the variables and expressions.
+To use late binding in C++, we need to put virtual in the front and a vtable is created at the compilation time.
+During the runtime, the vtable is checked.
